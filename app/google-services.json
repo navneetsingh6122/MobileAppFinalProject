@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "482916865323",
+    "project_id": "hiit-fit-473e1",
+    "storage_bucket": "hiit-fit-473e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482916865323:android:ed10b1eac9106aa0c8216e",
+        "android_client_info": {
+          "package_name": "com.example.hiitfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482916865323-700t005pob12i09f2uslnca3c5o6a50b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALR3i3QgvKiKTUd3i0GwlF8b3xa2XGUqo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482916865323-700t005pob12i09f2uslnca3c5o6a50b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
