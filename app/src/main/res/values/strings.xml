@@ -4,4 +4,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_email_address">Your Email Address</string>
+    <string name="log_out">Log Out</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="userpicture">UserPicture</string>
+    <string name="emailpicture">emailpicture</string>
+    <string name="usericon">usericon</string>
 </resources>
