@@ -38,10 +38,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
+        android:id="@+id/user_imageView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
         android:contentDescription="@string/userpicture"
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -51,64 +51,56 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="282dp"
-        android:layout_height="362dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="289dp"
+        android:layout_height="289dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="44dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/name_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_person_black"
+                android:text="@string/your_name"
+                tools:layout_editor_absoluteY="0dp" />
+        </RelativeLayout>
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="80dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:contentDescription="@string/usericon"
-                android:id="@+id/name_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                tools:srcCompat="@drawable/ic_person_black" />
 
             <TextView
-                android:id="@+id/name_textview"
-                android:layout_width="0dp"
+                android:id="@+id/email_textview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/your_name" />
+                android:drawableStart="@drawable/ic_email_black"
+                android:text="@string/your_email_address" />
         </LinearLayout>
-
-        <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:contentDescription="@string/emailpicture"
-            android:id="@+id/email_imageview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            tools:srcCompat="@drawable/ic_email_black" />
-
-        <TextView
-            android:id="@+id/email_textview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/your_email_address" />
-    </LinearLayout>
 
         <Button
             android:id="@+id/logout_button"
@@ -118,8 +110,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/log_out"
             android:backgroundTint="@color/grey"
+            android:text="@string/log_out"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
