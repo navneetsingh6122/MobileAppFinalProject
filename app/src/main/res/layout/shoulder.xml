@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EAEAEC"
+        android:background="#FAFAFB"
         android:padding="16dp">
 
         <ImageView
@@ -34,7 +34,7 @@
             android:fontFamily="@font/cairo"
             android:text="Name"
             android:textColor="#000"
-            android:textSize="20dp" />
+            android:textSize="25dp" />
 
 
     </RelativeLayout>
