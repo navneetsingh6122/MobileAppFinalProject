@@ -4,28 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBE4D5">
+    android:background="#EDECEC">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="620dp"
+        android:fontFamily="@font/cairo"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/muscle" />
+        app:srcCompat="@drawable/man" />
 
     <TextView
         android:id="@+id/shoulder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="160dp"
-        android:fontFamily="sans-serif-black"
-        android:text="---Shoulder"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/cairo"
+        android:text="----Shoulder"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView3"

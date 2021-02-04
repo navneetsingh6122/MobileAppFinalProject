@@ -32,7 +32,7 @@ ShoulderAdapter madapter;
         sh.setAdapter(madapter);
         db = FirebaseFirestore.getInstance();
 
-        db.collection("Abs").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("Shoulder").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot documentSnapshots) {
                 List<DocumentSnapshot> list = documentSnapshots.getDocuments();
