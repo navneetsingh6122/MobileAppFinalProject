@@ -4,14 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#47555E"
+    android:background="#E8E5E5"
     android:orientation="vertical"
     tools:context=".ShoulderExercise">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="138dp"
+        android:text="Shoulder"
+        android:textColor="@color/black"
+        android:fontFamily="@font/cairo"
+        android:textSize="32dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Shoulderrecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E8E5E5" />
+         />
 </LinearLayout>
