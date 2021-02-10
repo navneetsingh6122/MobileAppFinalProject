@@ -58,7 +58,11 @@ TextView textForSignUp;
                 mAuth.signInWithEmailAndPassword(Email , Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if(Email.equals("ad") && Password.equals("admin123")){
+                            Intent i = new Intent(Login.this, AdminHome.class);
+                            startActivity(i);
+                        }
+                        else if(task.isSuccessful()){
                             Toast.makeText(Login.this , "User successfully Logged In" , Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent (Login.this, HomeActivity.class);
                             startActivity(intent);

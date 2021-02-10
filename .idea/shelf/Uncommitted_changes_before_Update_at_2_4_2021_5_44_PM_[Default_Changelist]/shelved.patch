@@ -1,0 +1,64 @@
+Index: app/src/main/res/layout/activity_shoulder_description.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".ShoulderDescription\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/tv_Instruction\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"40dp\"\r\n        android:gravity=\"center\"\r\n        android:text=\"TextView\"\r\n        android:fontFamily=\"@font/cairo\"\r\n        android:textSize=\"16dp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/img_ex\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/tv_execution\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"40dp\"\r\n        android:fontFamily=\"@font/cairo\"\r\n        android:gravity=\"center\"\r\n        android:text=\"TextView\"\r\n        android:textSize=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/tv_Instruction\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/tv_name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"52dp\"\r\n        android:fontFamily=\"@font/cairo\"\r\n        android:text=\"TextView\"\r\n        android:textSize=\"30dp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/img_ex\"\r\n        android:layout_width=\"200dp\"\r\n        android:layout_height=\"200dp\"\r\n        android:layout_marginTop=\"50dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/tv_name\"\r\n        tools:srcCompat=\"@tools:sample/avatars\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_shoulder_description.xml	(revision 12e43dee44a0de242bbd2f951c6ab6649238e9ac)
++++ app/src/main/res/layout/activity_shoulder_description.xml	(date 1612476702120)
+@@ -10,30 +10,23 @@
+         android:id="@+id/tv_Instruction"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginEnd="16dp"
+-        android:layout_marginStart="16dp"
++        android:layout_marginStart="156dp"
+         android:layout_marginTop="40dp"
+         android:gravity="center"
+         android:text="TextView"
+-        android:fontFamily="@font/cairo"
+         android:textSize="16dp"
+         android:textStyle="bold"
+-        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/img_ex" />
+ 
+     <TextView
+         android:id="@+id/tv_execution"
+-        android:layout_width="350dp"
++        android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginEnd="16dp"
+-        android:layout_marginStart="16dp"
++        android:layout_marginStart="173dp"
+         android:layout_marginTop="40dp"
+-        android:fontFamily="@font/cairo"
+-        android:gravity="center"
+         android:text="TextView"
+-        android:textSize="16dp"
+-        app:layout_constraintEnd_toEndOf="parent"
++        android:textSize="12sp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/tv_Instruction" />
+ 
+@@ -41,8 +34,6 @@
+         android:id="@+id/tv_name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginEnd="16dp"
+-        android:layout_marginStart="16dp"
+         android:layout_marginTop="52dp"
+         android:fontFamily="@font/cairo"
+         android:text="TextView"
+@@ -55,8 +46,8 @@
+ 
+     <ImageView
+         android:id="@+id/img_ex"
+-        android:layout_width="200dp"
+-        android:layout_height="200dp"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
+         android:layout_marginTop="50dp"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
