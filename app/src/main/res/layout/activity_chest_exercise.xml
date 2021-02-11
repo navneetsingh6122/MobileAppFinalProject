@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="138dp"
         android:text="Chest"
+
         android:textColor="@color/black"
         android:fontFamily="@font/cairo"
         android:textSize="32dp" />
@@ -22,5 +23,5 @@
         android:id="@+id/chestRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:background="#F9F9FD" />
 </LinearLayout>

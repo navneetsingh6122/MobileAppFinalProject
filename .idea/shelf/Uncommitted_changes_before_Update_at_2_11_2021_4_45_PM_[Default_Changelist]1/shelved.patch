@@ -1,0 +1,157 @@
+Index: app/src/main/res/layout/activity_shoulder_description.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#AFABAB\"\r\n    tools:context=\".ShoulderDescription\">\r\n\r\n    <RelativeLayout\r\n        android:id=\"@+id/re\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"@color/white\"\r\n        android:orientation=\"horizontal\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/img_ex\"\r\n            android:layout_width=\"250dp\"\r\n            android:layout_height=\"300dp\"\r\n            android:layout_marginLeft=\"80dp\"\r\n\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            tools:srcCompat=\"@tools:sample/avatars\" />\r\n    </RelativeLayout>\r\n\r\n    <TextView\r\n        android:id=\"@+id/tv_name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:fontFamily=\"@font/cairo\"\r\n        android:text=\"TextView\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"30dp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/re\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/tv_Instruction\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n\r\n        android:backgroundTintMode=\"src_over\"\r\n        android:fontFamily=\"@font/cairo\"\r\n        android:gravity=\"center\"\r\n        android:text=\"TextView\"\r\n        android:textColor=\"@color/white\"\r\n        android:textSize=\"16dp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/tv_name\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/tv_execution\"\r\n        android:layout_width=\"350dp\"\r\n        android:layout_height=\"wrap_content\"\r\n\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:fontFamily=\"@font/cairo\"\r\n        android:gravity=\"center\"\r\n        android:text=\"TextView\"\r\n        android:textColor=\"@color/black\"\r\n        android:textSize=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.482\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/tv_Instruction\" />\r\n\r\n    <androidx.constraintlayout.widget.Barrier\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:barrierDirection=\"top\"\r\n        tools:layout_editor_absoluteX=\"194dp\"\r\n        tools:layout_editor_absoluteY=\"301dp\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/button\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Button\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_shoulder_description.xml	(revision af26b3553229eef2ba62000cdefb704d810e4384)
++++ app/src/main/res/layout/activity_shoulder_description.xml	(date 1613072818179)
+@@ -4,9 +4,18 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:background="#AFABAB"
++    android:background="@color/black"
+     tools:context=".ShoulderDescription">
+ 
++    <Button
++        android:id="@+id/button"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:text="Let's start"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent" />
++
+     <RelativeLayout
+         android:id="@+id/re"
+         android:layout_width="match_parent"
+@@ -29,22 +38,6 @@
+             tools:srcCompat="@tools:sample/avatars" />
+     </RelativeLayout>
+ 
+-    <TextView
+-        android:id="@+id/tv_name"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginEnd="16dp"
+-        android:layout_marginStart="16dp"
+-        android:layout_marginTop="10dp"
+-        android:fontFamily="@font/cairo"
+-        android:text="TextView"
+-        android:textColor="@color/black"
+-        android:textSize="30dp"
+-        android:textStyle="bold"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/re" />
+-
+     <TextView
+         android:id="@+id/tv_Instruction"
+         android:layout_width="wrap_content"
+@@ -76,13 +69,29 @@
+         android:fontFamily="@font/cairo"
+         android:gravity="center"
+         android:text="TextView"
+-        android:textColor="@color/black"
++        android:textColor="@color/white"
+         android:textSize="16dp"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.482"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/tv_Instruction" />
+ 
++    <TextView
++        android:id="@+id/tv_name"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginEnd="16dp"
++        android:layout_marginStart="16dp"
++        android:layout_marginTop="10dp"
++        android:fontFamily="@font/cairo"
++        android:text="TextView"
++        android:textColor="@color/white"
++        android:textSize="30dp"
++        android:textStyle="bold"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/re" />
++
+     <androidx.constraintlayout.widget.Barrier
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+@@ -90,14 +99,5 @@
+         tools:layout_editor_absoluteX="194dp"
+         tools:layout_editor_absoluteY="301dp" />
+ 
+-    <Button
+-        android:id="@+id/button"
+-        android:layout_width="0dp"
+-        android:layout_height="wrap_content"
+-        android:text="Button"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toStartOf="parent" />
+-
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/shoulder.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.cardview.widget.CardView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:id=\"@+id/cardv\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\"\r\n\r\n    android:elevation=\"4dp\"\r\n    app:cardCornerRadius=\"15dp\"\r\n    app:cardUseCompatPadding=\"true\">\r\n\r\n    <RelativeLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"#FAFAFB\"\r\n        android:padding=\"16dp\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/image_admin_exercise\"\r\n            android:layout_width=\"150dp\"\r\n            android:layout_height=\"150dp\"\r\n            android:src=\"@drawable/user\" />\r\n\r\n\r\n        <TextView\r\n            android:id=\"@+id/name\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_alignParentEnd=\"true\"\r\n\r\n            android:layout_marginLeft=\"50dp\"\r\n            android:layout_toEndOf=\"@+id/image_admin_exercise\"\r\n\r\n            android:fontFamily=\"@font/cairo\"\r\n            android:text=\"Name\"\r\n            android:textColor=\"#000\"\r\n            android:textSize=\"25dp\" />\r\n\r\n\r\n    </RelativeLayout>\r\n\r\n</androidx.cardview.widget.CardView>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/shoulder.xml	(revision af26b3553229eef2ba62000cdefb704d810e4384)
++++ app/src/main/res/layout/shoulder.xml	(date 1613073166576)
+@@ -6,15 +6,17 @@
+     android:layout_height="wrap_content"
+ 
+     android:elevation="4dp"
+-    app:cardCornerRadius="15dp"
++
++    android:layout_margin="20dp"
+     app:cardUseCompatPadding="true">
+ 
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:background="#FAFAFB"
++        android:background="#FBFBFB"
+         android:padding="16dp">
+ 
++
+         <ImageView
+             android:id="@+id/image_admin_exercise"
+             android:layout_width="150dp"
+@@ -33,8 +35,9 @@
+ 
+             android:fontFamily="@font/cairo"
+             android:text="Name"
+-            android:textColor="#000"
+-            android:textSize="25dp" />
++            android:textColor="@color/black"
++            android:textSize="20dp"
++            android:textStyle="bold" />
+ 
+ 
+     </RelativeLayout>
+Index: app/src/main/res/layout/activity_shoulder_exercise.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#E8E5E5\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".ShoulderExercise\">\r\n\r\n    <TextView\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginLeft=\"138dp\"\r\n        android:text=\"Shoulder\"\r\n        android:textColor=\"@color/black\"\r\n        android:fontFamily=\"@font/cairo\"\r\n        android:textSize=\"32dp\" />\r\n\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:id=\"@+id/Shoulderrecycler\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n         />\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_shoulder_exercise.xml	(revision af26b3553229eef2ba62000cdefb704d810e4384)
++++ app/src/main/res/layout/activity_shoulder_exercise.xml	(date 1613072964004)
+@@ -22,5 +22,5 @@
+         android:id="@+id/Shoulderrecycler"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+-         />
++        android:background="#1D1B42" />
+ </LinearLayout>
+\ No newline at end of file
