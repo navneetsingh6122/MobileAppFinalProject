@@ -29,6 +29,8 @@ import java.util.UUID;
 
 public class AdminAddShoulder extends AppCompatActivity {
 TextView view;
+int number;
+String Exercise;
     EditText name;
     EditText instruction;
     EditText execution;
@@ -46,7 +48,7 @@ public Uri image;
         setContentView(R.layout.activity_admin_add_shoulder);
         storage = FirebaseStorage.getInstance();
         str = storage.getReference();
-
+   number = getIntent().getExtras().getInt("ID");
 
 
         name = (EditText)findViewById(R.id.editText_name);
@@ -56,12 +58,26 @@ view = (TextView)findViewById(R.id.text_getString);
         chooseImage = (Button)findViewById(R.id.button_imagechoose);
         fstore = FirebaseFirestore.getInstance();
         add = (Button)findViewById(R.id.button_AddExercise);
+if(number == 0){
+    view.setText("Click here to see shoulder exercises");
+    Exercise = "Shoulder";
+}else if(number == 1){
+    Exercise = "Chest";
+    view.setText("Click here to see Chest exercises");
 
+}
 view.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(AdminAddShoulder.this, AdminShoulder.class);
-        startActivity(intent);
+        if(number==0) {
+            Intent intent = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+            startActivity(intent);
+        }else if(number==1){
+
+            Intent intent = new Intent(AdminAddShoulder.this, AdminChest.class);
+            startActivity(intent);
+            
+        }
     }
 });
         chooseImage.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +104,7 @@ view.setOnClickListener(new View.OnClickListener() {
                 exercise.put("Execution", Execution);
                 exercise.put("ImageUrl", imageurl);
 
-                fstore.collection("Abs").add(exercise).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                fstore.collection(Exercise).add(exercise).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(AdminAddShoulder.this, "Exercise added to firestore ", Toast.LENGTH_SHORT).show();

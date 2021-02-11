@@ -9,17 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AdminShoulder extends AppCompatActivity {
    private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -50,7 +42,7 @@ setUpRecyclerView();
 
         adapter = new AdminAdapter(options);
 
-        RecyclerView recyclerView = findViewById(R.id.adminRecycler);
+        RecyclerView recyclerView = findViewById(R.id.adminShoulderRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

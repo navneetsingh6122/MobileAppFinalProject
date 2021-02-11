@@ -1,6 +1,7 @@
 package com.example.hiitfit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdminAdapter extends FirestoreRecyclerAdapter<AdminModel, AdminAdapter.myViewHolder> {
@@ -29,6 +31,18 @@ public class AdminAdapter extends FirestoreRecyclerAdapter<AdminModel, AdminAdap
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull AdminModel model) {
         holder.textView.setText(model.getName());
         Picasso.get().load(model.getImageUrl()).into(holder.img);
+        holder.cd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.cd.getContext(), ShoulderDescription.class);
+                intent.putExtra("fullname", model.getName());
+                intent.putExtra("ins",model.getInstructions());
+                intent.putExtra("exe",model.getExecution());
+                intent.putExtra("img",model.getImageUrl());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                holder.cd.getContext().startActivity(intent);
+            }
+        });
     }
 
     @NonNull
@@ -43,11 +57,13 @@ public void deleteItem(int position){
     class myViewHolder extends RecyclerView.ViewHolder{
 TextView textView;
 ImageView img, imgdel;
+CardView cd;
     public myViewHolder(@NonNull View itemView) {
         super(itemView);
         textView = itemView.findViewById(R.id.name);
         img = itemView.findViewById(R.id.image_admin_exercise);
         imgdel = itemView.findViewById(R.id.delete_img);
+        cd = itemView.findViewById(R.id.cardv);
     }
 }
 }

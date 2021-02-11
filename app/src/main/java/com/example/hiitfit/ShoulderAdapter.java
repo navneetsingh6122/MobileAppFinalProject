@@ -12,21 +12,36 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ShoulderAdapter extends RecyclerView.Adapter<ShoulderAdapter.myViewHolder> {
-Context mcontext;
-ArrayList<ShoulderModel> datalist;
+public class ShoulderAdapter extends FirestoreRecyclerAdapter<ShoulderModel,ShoulderAdapter.myViewHolder> {
 
-    public ShoulderAdapter(Context mcontext, ArrayList<ShoulderModel> datalist) {
-        this.mcontext = mcontext;
-        this.datalist = datalist;
+    public ShoulderAdapter(@NonNull FirestoreRecyclerOptions<ShoulderModel> options) {
+        super(options);
     }
 
-    public ShoulderAdapter(ArrayList<ShoulderModel> datalist) {
-        this.datalist = datalist;
+    @Override
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull ShoulderModel model) {
+        holder.T1.setText(model.getName());
+        Picasso.get().load(model.getImageUrl()).into(holder.img);
+
+        holder.cd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.cd.getContext(), ShoulderDescription.class);
+                intent.putExtra("fullname", model.getName());
+                intent.putExtra("ins",model.getInstructions());
+                intent.putExtra("exe",model.getExecution());
+                intent.putExtra("img",model
+                        .getImageUrl());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                holder.cd.getContext().startActivity(intent);
+            }
+        });
     }
 
     @NonNull
@@ -34,53 +49,25 @@ ArrayList<ShoulderModel> datalist;
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shoulder,parent,false);
         return new myViewHolder(view);
-    }
 
-    @Override
-    public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        holder.T1.setText(datalist.get(position).getName());
-       // holder.T2.setText(datalist.get(position).getExecution());
-       // holder.T3.setText(datalist.get(position).getExecution());
-        Picasso.get().load(datalist.get(position).getImageUrl()).into(holder.img);
-holder.cd.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(holder.cd.getContext(), ShoulderDescription.class);
-        intent.putExtra("fullname", datalist.get(position).getName());
-        intent.putExtra("ins",datalist.get(position).getInstructions());
-        intent.putExtra("exe",datalist.get(position).getExecution());
-        intent.putExtra("img",datalist.get(position).getImageUrl());
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        holder.cd.getContext().startActivity(intent);
-    }
-});/*
-       holder.T1.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(holder.T1.getContext(),ShoulderDescription.class);
-               holder.
-           }
-       }); */
-    }
-
-    @Override
-    public int getItemCount() {
-        return datalist.size();
     }
 
     class myViewHolder extends RecyclerView.ViewHolder{
-ImageView img;
-TextView T1,T2,T3;
-CardView cd;
+        ImageView img;
+        TextView T1,T2,T3;
+        CardView cd;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
             img = itemView.findViewById(R.id.image_admin_exercise);
             T1 = itemView.findViewById(R.id.name);
-           // T2 = itemView.findViewById(R.id.t2);
+
+
+            // T2 = itemView.findViewById(R.id.t2);
             //T3 = itemView.findViewById(R.id.t3);
-cd = itemView.findViewById(R.id.cardv);
+            cd = itemView.findViewById(R.id.cardv);
         }
     }
+
 
 }

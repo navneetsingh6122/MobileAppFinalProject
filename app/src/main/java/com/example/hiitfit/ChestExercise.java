@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -16,37 +19,41 @@ import java.util.List;
 
 public class ChestExercise extends AppCompatActivity {
 
-    RecyclerView sh;
-    ArrayList<ShoulderModel> detailList;
-    FirebaseFirestore db;
-    ShoulderAdapter madapter;
-
+    private FirebaseFirestore ref = FirebaseFirestore.getInstance();
+    private CollectionReference hello = ref.collection("Chest");
+    private ShoulderAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chest_exercise);
-
-        sh = (RecyclerView)findViewById(R.id.chestRecycler);
-        sh.setLayoutManager(new LinearLayoutManager(this));
-
-        detailList = new ArrayList<>();
-        madapter = new ShoulderAdapter(detailList);
-        sh.setAdapter(madapter);
-        db = FirebaseFirestore.getInstance();
-
-        db.collection("Chest").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot documentSnapshots) {
-                List<DocumentSnapshot> list = documentSnapshots.getDocuments();
-                for(DocumentSnapshot d:list){
-                    ShoulderModel obj = d.toObject(ShoulderModel.class);
-                    detailList.add(obj);
-                }
-
-                //update adapter
-                madapter.notifyDataSetChanged();
-            }
-        });
+setChestRecyclerView();
 
     }
+
+   private void setChestRecyclerView() {
+        Query query = hello.orderBy("Name", Query.Direction.ASCENDING);
+
+        FirestoreRecyclerOptions<ShoulderModel> options = new FirestoreRecyclerOptions.Builder<ShoulderModel>().
+                setQuery(query,ShoulderModel.class).build();
+
+        adapter = new ShoulderAdapter(options);
+
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.chestRecycler);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
     }
