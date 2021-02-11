@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class AdminAddShoulder extends AppCompatActivity {
-TextView get;
+TextView view;
     EditText name;
     EditText instruction;
     EditText execution;
@@ -52,12 +52,18 @@ public Uri image;
         name = (EditText)findViewById(R.id.editText_name);
         instruction = (EditText)findViewById(R.id.editText_Instructions);
         execution = (EditText)findViewById(R.id.editText_execution);
-get = (TextView)findViewById(R.id.text_getString);
+view = (TextView)findViewById(R.id.text_getString);
         chooseImage = (Button)findViewById(R.id.button_imagechoose);
         fstore = FirebaseFirestore.getInstance();
         add = (Button)findViewById(R.id.button_AddExercise);
 
-
+view.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(AdminAddShoulder.this, ShoulderExercise.class);
+        startActivity(intent);
+    }
+});
         chooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
