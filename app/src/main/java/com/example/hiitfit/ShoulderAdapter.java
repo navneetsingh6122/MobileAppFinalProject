@@ -75,8 +75,8 @@ CardView cd;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            img = itemView.findViewById(R.id.imageView);
-            T1 = itemView.findViewById(R.id.t1);
+            img = itemView.findViewById(R.id.image_admin_exercise);
+            T1 = itemView.findViewById(R.id.name);
            // T2 = itemView.findViewById(R.id.t2);
             //T3 = itemView.findViewById(R.id.t3);
 cd = itemView.findViewById(R.id.cardv);
