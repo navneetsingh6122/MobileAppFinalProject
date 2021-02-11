@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HIITFIT">
-        <activity android:name=".AdminAddShoulder"></activity>
+        <activity android:name=".ChestExercise"></activity>
+        <activity android:name=".AdminAddShoulder" />
         <activity android:name=".AdminHome" />
         <activity android:name=".ShoulderDescription" />
         <activity android:name=".ShoulderExercise" />
