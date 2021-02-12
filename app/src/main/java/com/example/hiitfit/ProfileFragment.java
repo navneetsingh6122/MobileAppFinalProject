@@ -33,7 +33,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseFirestore fstore;
     String userID;
     FirebaseAuth mAuth;
-    Button logout;
+    Button logout, changeprofile;
 
     @Nullable
     @Override
@@ -42,12 +42,20 @@ public class ProfileFragment extends Fragment {
         nameTextView = (TextView) V.findViewById(R.id.name_textview);
         emailTextView = (TextView) V.findViewById(R.id.email_textview);
         logout = (Button) V.findViewById(R.id.logout_button);
+        changeprofile = (Button) V.findViewById(R.id.profile_button);
         fstore=FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getCurrentUser().getUid();
 
 
         fetchdata();
+        changeprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent v = new Intent(getActivity(), EditProfile.class);
+                startActivity(v);
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
