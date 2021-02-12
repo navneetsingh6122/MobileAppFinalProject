@@ -24,9 +24,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +52,7 @@ public class EditProfile extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button save_button, photo_button, gallery_button;
     String currentPhotoPath;
+    StorageReference storageReference;
 
     @Override
 
@@ -63,6 +70,7 @@ public class EditProfile extends AppCompatActivity {
         photo_button = findViewById(R.id.photo_button);
         save_button = findViewById(R.id.save_button);
         gallery_button = findViewById(R.id.gallery_button);
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         fetchdata();
         photo_button.setOnClickListener(view -> {
@@ -112,13 +120,15 @@ public class EditProfile extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK)
             {
                 File f = new File(currentPhotoPath);
-                userImageView.setImageURI(Uri.fromFile(f));
+                //userImageView.setImageURI(Uri.fromFile(f));
                 Log.d("tag","Absolute Url of Image is" + Uri.fromFile(f));
 
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 Uri contentUri = Uri.fromFile(f);
                 mediaScanIntent.setData(contentUri);
                 this.sendBroadcast(mediaScanIntent);
+
+                uploadImageToFirebase(f.getName(),contentUri);
             }
         }
         if (requestCode == GALLERY_REQUEST_CODE) {
@@ -128,10 +138,31 @@ public class EditProfile extends AppCompatActivity {
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 String imageFileName = "JEPG_" + timeStamp + "." + getFileExt(contentUri);
                 Log.d("tag","onActivityResult:Gallery Image Uri:" + imageFileName);
-                userImageView.setImageURI(contentUri);
+                //userImageView.setImageURI(contentUri);
+
+                uploadImageToFirebase(imageFileName,contentUri);
             }
         }
     }
+
+    private void uploadImageToFirebase(String name, Uri contentUri){
+        String str = contentUri.getUserInfo();
+        Intent intent = new Intent(EditProfile.this, ProfileFragment.class);
+        intent.putExtra("ImageUri",str);
+        startActivity(intent);
+
+        final StorageReference image = storageReference.child("pictures/" + name);
+        image.putFile(contentUri).addOnSuccessListener(taskSnapshot -> {
+            image.getDownloadUrl().addOnSuccessListener(uri -> {
+                Picasso.get().load(uri).into(userImageView);
+            });
+            Toast.makeText(EditProfile.this, "Image Is Uploaded", Toast.LENGTH_SHORT).show();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(EditProfile.this, "Upload Failled.", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+
 
     private String getFileExt(Uri contentUri) {
         ContentResolver c = getContentResolver();
