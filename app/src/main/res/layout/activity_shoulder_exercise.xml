@@ -9,6 +9,8 @@
     tools:context=".ShoulderExercise">
 
     <TextView
+        android:id="@+id/user_exercise_name"
+        android:inputType="textNoSuggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="138dp"

@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/man" />
 
     <TextView
-        android:id="@+id/shoulder"
+        android:id="@+id/shoulder_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="276dp"
@@ -36,7 +36,7 @@
 
 
     <TextView
-        android:id="@+id/chest"
+        android:id="@+id/chest_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Abs"
+        android:id="@+id/Abs_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Biceps"
+        android:id="@+id/Biceps_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="275dp"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Forearms"
+        android:id="@+id/Forearms_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="275dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Obliques"
+        android:id="@+id/Obliques_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -106,7 +106,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Quads"
+        android:id="@+id/Quads_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -119,7 +119,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/Abductors"
+        android:id="@+id/Abductors_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="280dp"
@@ -133,7 +133,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/calves"
+        android:id="@+id/calves_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
@@ -146,7 +146,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/Triceps"
+        android:id="@+id/Triceps_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -160,7 +160,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Traps"
+        android:id="@+id/Traps_u"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
