@@ -1,5 +1,6 @@
 package com.example.hiitfit;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -20,22 +21,24 @@ public class users_view_adapter extends FirestoreRecyclerAdapter<users,users_vie
     @Override
     protected void onBindViewHolder(@NonNull users_view_holder holder, int position, @NonNull users model) {
 
+        holder.textView_users.setText(model.getUsers());
+        holder.textView_email.setText(model.getEmail());
     }
 
     @NonNull
     @Override
     public users_view_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.users_item,parent,false);
+        return new users_view_holder(v);
     }
 
     class users_view_holder extends RecyclerView.ViewHolder{
-        TextView textView_title, textView_email, textView_priority;
+        TextView textView_users, textView_email, textView_priority;
 
         public users_view_holder(@NonNull View itemView) {
             super(itemView);
-            textView_title = itemView.findViewById(R.id.users_view_title);
+            textView_users = itemView.findViewById(R.id.users_view_users);
             textView_email = itemView.findViewById(R.id.users_view_email);
-            textView_priority = itemView.findViewById(R.id.users_view_priority);
         }
     }
 }

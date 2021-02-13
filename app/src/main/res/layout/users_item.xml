@@ -14,24 +14,15 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/users_view_title"
+            android:id="@+id/users_view_users"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="Users"
             android:maxLines="1"
-            android:layout_toStartOf="@id/users_view_priority"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_alignParentStart="true"
             android:ellipsize="end"/>
 
-        <TextView
-            android:id="@+id/users_view_priority"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:id="@+id/users_view_email"
@@ -39,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:text="Email"
-            android:layout_below="@id/users_view_title"/>
+            android:layout_below="@id/users_view_users"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
