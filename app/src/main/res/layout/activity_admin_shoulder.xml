@@ -9,12 +9,13 @@
     tools:context=".AdminShoulder">
 
     <TextView
+        android:id="@+id/TextView_Admin_Shoulder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="138dp"
+        android:fontFamily="@font/cairo"
         android:text="Shoulder"
         android:textColor="@color/black"
-        android:fontFamily="@font/cairo"
         android:textSize="32dp" />
 
 

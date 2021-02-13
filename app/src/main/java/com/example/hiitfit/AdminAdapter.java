@@ -62,7 +62,7 @@ CardView cd;
         super(itemView);
         textView = itemView.findViewById(R.id.name);
         img = itemView.findViewById(R.id.image_admin_exercise);
-        imgdel = itemView.findViewById(R.id.delete_img);
+
         cd = itemView.findViewById(R.id.cardv);
     }
 }

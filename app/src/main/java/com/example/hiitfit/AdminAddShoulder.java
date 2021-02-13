@@ -58,6 +58,50 @@ view = (TextView)findViewById(R.id.text_getString);
         chooseImage = (Button)findViewById(R.id.button_imagechoose);
         fstore = FirebaseFirestore.getInstance();
         add = (Button)findViewById(R.id.button_AddExercise);
+
+        switch(number){
+            case(0):view.setText("Click here to see shoulder exercises");
+    Exercise = "Shoulder";
+            break;
+            case(1):view.setText("Click here to see Chest exercises");
+    Exercise = "Chest";
+                break;
+            case(2):view.setText("Click here to see Traps exercises");
+    Exercise = "Traps";
+                break;
+            case(3):view.setText("Click here to see Abductors exercises");
+    Exercise = "Abductors";
+                break;
+            case(4):view.setText("Click here to see Abs exercises");
+    Exercise = "Abs";
+                break;
+            case(5):view.setText("Click here to see Biceps exercises");
+    Exercise = "Biceps";
+                break;
+            case(6):view.setText("Click here to see Calves exercises");
+    Exercise = "Calves";
+                break;
+            case(7):view.setText("Click here to see ForeArms exercises");
+    Exercise = "ForeArms";
+                break;
+            case(8):view.setText("Click here to see Obliques exercises");
+    Exercise = "Obliques";
+                break;
+            case(9):view.setText("Click here to see Triceps exercises");
+    Exercise = "Triceps";
+                break;
+            case(10):view.setText("Click here to see Quads exercises");
+    Exercise = "Quads";
+                break;
+
+        }
+
+
+
+
+
+     /*
+
 if(number == 0){
     view.setText("Click here to see shoulder exercises");
     Exercise = "Shoulder";
@@ -65,19 +109,77 @@ if(number == 0){
     Exercise = "Chest";
     view.setText("Click here to see Chest exercises");
 
-}
+}else if(number == 2){
+    Exercise = "Traps";
+    view.setText("Click here to see Traps exercises");
+
+}*/
 view.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+
+        switch (number){
+
+            case(0):Intent ExShoulder = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+                ExShoulder.putExtra("ID", number);
+                startActivity(ExShoulder);
+                break;
+            case(1):Intent ExChest = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+                ExChest.putExtra("ID", number);
+                startActivity(ExChest);
+                break;
+            case(2):Intent ExTraps = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+            ExTraps.putExtra("ID", number);
+            startActivity(ExTraps);
+                break;
+            case(3):Intent ExAbductors = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+            ExAbductors.putExtra("ID", number);
+            startActivity(ExAbductors);
+                break;
+            case(4):Intent ExAbs = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+            ExAbs.putExtra("ID", number);
+            startActivity(ExAbs);
+                break;
+            case(5):Intent ExBiceps = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+            ExBiceps.putExtra("ID", number);
+            startActivity(ExBiceps);
+                break;
+            case(6):Intent ExCalves = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+                ExCalves.putExtra("ID", number);
+                startActivity(ExCalves);
+                break;
+            case(7):Intent ExForearms = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+                ExForearms.putExtra("ID", number);
+                startActivity(ExForearms);
+                break;
+            case(8):Intent ExObliques = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+                ExObliques.putExtra("ID", number);
+                startActivity(ExObliques);
+                break;
+            case(9):Intent ExTriceps = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+                ExTriceps.putExtra("ID", number);
+                startActivity(ExTriceps);
+                break;
+            case(10):Intent ExQuads = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+                ExQuads.putExtra("ID", number);
+                startActivity(ExQuads);
+                break;
+        }
+
+        /*
         if(number==0) {
             Intent intent = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+            intent.putExtra("ID", number);
             startActivity(intent);
         }else if(number==1){
 
             Intent intent = new Intent(AdminAddShoulder.this, AdminChest.class);
             startActivity(intent);
-            
-        }
+        }if(number==2) {
+            Intent intent = new Intent(AdminAddShoulder.this, AdminShoulder.class);
+            intent.putExtra("ID", number);
+            startActivity(intent);
+        }*/
     }
 });
         chooseImage.setOnClickListener(new View.OnClickListener() {
