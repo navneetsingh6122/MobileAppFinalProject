@@ -8,7 +8,7 @@
     tools:context=".ShoulderDescription">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_timer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Let's start"
