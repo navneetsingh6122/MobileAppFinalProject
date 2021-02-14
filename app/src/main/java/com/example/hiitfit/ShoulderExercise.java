@@ -1,6 +1,8 @@
 package com.example.hiitfit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +27,7 @@ FirebaseFirestore db;
 ShoulderAdapter madapter;*/
 private FirebaseFirestore db = FirebaseFirestore.getInstance();
 private CollectionReference exerciseref;
-
+String Category;
 private ShoulderAdapter madapter;
 int number;
 TextView ExerciseName;
@@ -35,6 +37,7 @@ TextView ExerciseName;
         setContentView(R.layout.activity_shoulder_exercise);
         ExerciseName = (TextView)findViewById(R.id.user_exercise_name);
         number = getIntent().getExtras().getInt("ID");
+
 
         switch(number){
             case(0):exerciseref = db.collection("Shoulder");
@@ -82,6 +85,8 @@ TextView ExerciseName;
 
     }
 
+
+
     private void setUpRecyclerView() {
         Query query = exerciseref.orderBy("Name", Query.Direction.ASCENDING);
 
@@ -92,7 +97,9 @@ TextView ExerciseName;
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.Shoulderrecycler);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        /*recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(madapter);*/
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(madapter);
     }
 

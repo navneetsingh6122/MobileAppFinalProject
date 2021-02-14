@@ -17,6 +17,7 @@ public class ExerciseFragment extends Fragment {
 
     TextView exerciseActivity, chestActivity , TrapsActivity,Abductors,Abs,Biceps,Calves,ForeArm,Obliques,Triceps,Quads;
 int nb;
+String Category;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,7 +39,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ShoulderExercise.class);
                 nb = 0;
+                Category = "Shoulder";
                 intent.putExtra("ID", nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -47,8 +50,9 @@ int nb;
             public void onClick(View v) {
                 Intent next = new Intent (getActivity(), ShoulderExercise.class);
                 nb = 1;
+                Category = "Chest";
                 next.putExtra("ID", nb);
-
+                next.putExtra("exercisecat",Category);
                 startActivity(next);
             }
         });
@@ -59,7 +63,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 2;
+                Category = "Traps";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -69,7 +75,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 3;
+                Category = "Abductors";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -79,7 +87,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 4;
+                Category = "Abs";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -88,7 +98,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 5;
+                Category = "Biceps";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -97,7 +109,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 6;
+                Category = "Calves";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -106,7 +120,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 7;
+                Category = "ForeArms";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -115,7 +131,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 8;
+                Category = "Obliques";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -124,7 +142,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 9;
+                Category = "Triceps";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });
@@ -133,7 +153,9 @@ int nb;
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShoulderExercise.class);
                 nb = 10;
+                Category = "Quads";
                 intent.putExtra("ID",nb);
+                intent.putExtra("exercisecat",Category);
                 startActivity(intent);
             }
         });

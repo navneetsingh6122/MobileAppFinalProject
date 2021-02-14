@@ -1,19 +1,26 @@
 package com.example.hiitfit;
 
 public class ShoulderModel {
-    String Execution, ImageUrl , Instructions,Name;
+    String Execution, ImageUrl , Instructions,Name,Category;
 
 
 
     public ShoulderModel() {
     }
 
-    public ShoulderModel(String execution, String imageUrl, String instructions, String name) {
+    public ShoulderModel(String execution, String imageUrl, String instructions, String name,String category) {
         Execution = execution;
         ImageUrl = imageUrl;
         Instructions = instructions;
         Name = name;
+        Category = category;
     }
+
+    public String getCategory() {
+        return Category;
+    }
+
+
 
     public String getExecution() {
         return Execution;
@@ -45,5 +52,8 @@ public class ShoulderModel {
 
     public void setName(String name) {
         Name = name;
+    }
+    public void setCategory(String category) {
+        Category = category;
     }
 }

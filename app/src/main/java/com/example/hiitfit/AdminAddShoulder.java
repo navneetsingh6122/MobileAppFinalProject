@@ -41,7 +41,7 @@ public Uri image;
     private StorageReference str;
     FirebaseFirestore fstore;
     private static final int pick = 2;
-
+String Category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,36 +62,47 @@ view = (TextView)findViewById(R.id.text_getString);
         switch(number){
             case(0):view.setText("Click here to see shoulder exercises");
     Exercise = "Shoulder";
+                Category = "Shoulder";
             break;
             case(1):view.setText("Click here to see Chest exercises");
     Exercise = "Chest";
+                Category = "Chest";
                 break;
             case(2):view.setText("Click here to see Traps exercises");
     Exercise = "Traps";
+                Category = "Traps";
                 break;
             case(3):view.setText("Click here to see Abductors exercises");
     Exercise = "Abductors";
+                Category = "Abductors";
                 break;
             case(4):view.setText("Click here to see Abs exercises");
     Exercise = "Abs";
+                Category = "Abs";
                 break;
             case(5):view.setText("Click here to see Biceps exercises");
     Exercise = "Biceps";
+                Category = "Biceps";
                 break;
             case(6):view.setText("Click here to see Calves exercises");
     Exercise = "Calves";
+                Category = "Calves";
                 break;
             case(7):view.setText("Click here to see ForeArms exercises");
     Exercise = "ForeArms";
+                Category = "ForeArms";
                 break;
             case(8):view.setText("Click here to see Obliques exercises");
     Exercise = "Obliques";
+                Category = "Obliques";
                 break;
             case(9):view.setText("Click here to see Triceps exercises");
     Exercise = "Triceps";
+                Category = "Triceps";
                 break;
             case(10):view.setText("Click here to see Quads exercises");
     Exercise = "Quads";
+                Category = "Quads";
                 break;
 
         }
@@ -205,6 +216,7 @@ view.setOnClickListener(new View.OnClickListener() {
                 exercise.put("Instructions", Instructions);
                 exercise.put("Execution", Execution);
                 exercise.put("ImageUrl", imageurl);
+                exercise.put("Category",Category);
 
                 fstore.collection(Exercise).add(exercise).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

@@ -1,28 +1,42 @@
 package com.example.hiitfit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
-import ticker.views.com.ticker.widgets.circular.timer.callbacks.CircularViewCallback;
 import ticker.views.com.ticker.widgets.circular.timer.view.CircularView;
 
-import android.animation.ObjectAnimator;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class TimerActivity extends AppCompatActivity {
 private static long START_TIME_IN_MILLI = 600000;
+private static long ACTUAL_STARTED_TIMER;
 TextView name,execution;
-String getName,getExecution;
+
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String date;
+
+    String getName,getExecution,getCategory;
 private TextView mTextViewCountDown;
 private Button mButtonStartPause;
 private Button mButtonReset;
@@ -35,6 +49,10 @@ private boolean mTimerRunning;
 CircularView cd;
 private long mTimeLeftInMillis = START_TIME_IN_MILLI;
 
+    String userID;
+    FirebaseAuth mAuth;
+    private FirebaseFirestore fstore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +64,13 @@ execution = (TextView)findViewById(R.id.execution_Timer);
 
 getName = getIntent().getExtras().getString("Name");
 getExecution = getIntent().getExtras().getString("Execution");
+getCategory = getIntent().getExtras().getString("category");
+        mAuth = FirebaseAuth.getInstance();
+        userID = mAuth.getCurrentUser().getUid();
+        fstore = FirebaseFirestore.getInstance();
+        calendar = Calendar.getInstance();
+
+        ////////////////////////////
 
 name.setText(getName);
 execution.setText(getExecution);
@@ -71,10 +96,12 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 20000;
+                ACTUAL_STARTED_TIMER = 20000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
                 mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
+
             }
         });
 
@@ -82,10 +109,12 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 30000;
+                ACTUAL_STARTED_TIMER = 30000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
                 mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
+
             }
         });
 
@@ -93,6 +122,7 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 45000;
+                ACTUAL_STARTED_TIMER = 45000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
@@ -105,6 +135,7 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 60000;
+                ACTUAL_STARTED_TIMER = 60000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
@@ -117,6 +148,7 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 90000;
+                ACTUAL_STARTED_TIMER = 90000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
@@ -128,6 +160,7 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 120000;
+                ACTUAL_STARTED_TIMER = 120000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
@@ -140,6 +173,7 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 240000;
+                ACTUAL_STARTED_TIMER = 240000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
@@ -152,6 +186,7 @@ execution.setText(getExecution);
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = 300000;
+                ACTUAL_STARTED_TIMER = 300000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
@@ -163,6 +198,7 @@ execution.setText(getExecution);
             public void onClick(View v) {
 if(START_TIME_IN_MILLI>5000) {
     START_TIME_IN_MILLI = START_TIME_IN_MILLI - 5000;
+    ACTUAL_STARTED_TIMER = ACTUAL_STARTED_TIMER-5000;
     mTimeLeftInMillis = START_TIME_IN_MILLI;
     updateCountDownTextView();
 }
@@ -177,6 +213,8 @@ if(START_TIME_IN_MILLI == 5000) {
             @Override
             public void onClick(View v) {
                 START_TIME_IN_MILLI = START_TIME_IN_MILLI + 5000;
+                ACTUAL_STARTED_TIMER = ACTUAL_STARTED_TIMER +5000;
+
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
                 mButtonminus.setClickable(true);
@@ -207,6 +245,9 @@ if(START_TIME_IN_MILLI == 5000) {
         });
         updateCountDownTextView();
     }
+
+
+
     private void startTimer() {
 mCountDownTimer = new CountDownTimer(mTimeLeftInMillis,1000) {
     @Override
@@ -249,6 +290,59 @@ cd.stopTimer();
         Toasty.success(TimerActivity.this,"Time's Up", Toasty.LENGTH_SHORT).show();
        // Toast.makeText(TimerActivity.this, "Time's Up!!!" , Toast.LENGTH_SHORT).show();
         md.start();
+
+        DocumentReference document = fstore.collection("users").document(userID);
+        document.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
+
+
+
+
+//updateFinishTimer();
+                    int minutes = (int) (ACTUAL_STARTED_TIMER/1000) / 60;
+                    int seconds = (int) (ACTUAL_STARTED_TIMER/1000) % 60;
+                    String timeInMinutes = String.format(Locale.getDefault(),"%02d Min : %02d Sec",minutes,seconds);
+                    String  userName =  documentSnapshot.getString("fName");
+                    String  userEmail = documentSnapshot.getString("email");
+
+                    Map<String,String> progress = new HashMap<>();
+                    progress.put("Name", userName);
+                    progress.put("Email", userEmail);
+                    progress.put("ExerciseName", getName);
+                    progress.put("Duration", timeInMinutes);
+                    progress.put("DateAndTime",currentDateTimeString);
+                    progress.put("Category",getCategory);
+
+                    fstore.collection("Progress").add(progress).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+Toast.makeText(TimerActivity.this,"Progress Successfully Added",Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(TimerActivity.this,"Something Went Wrong"+ e.getMessage(),Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+
+                }
+                else {
+                    Toast.makeText(TimerActivity.this, "row not found", Toast.LENGTH_LONG).show();
+                }
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(TimerActivity.this,"Failed to fetch data", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }.start();
 
@@ -292,6 +386,8 @@ mButtonReset.setVisibility(View.INVISIBLE);
 
 
     }
+
+
 
 
     private void pauseTimer() {
@@ -344,4 +440,6 @@ mButtonReset.setVisibility(View.INVISIBLE);
         mTextViewCountDown.setText(timeLeftFormatted);
 
     }
+
+
 }
