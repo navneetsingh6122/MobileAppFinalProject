@@ -73,6 +73,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 20000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -82,6 +84,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 30000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -91,6 +95,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 45000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -101,6 +107,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 60000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -111,6 +119,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 90000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -120,6 +130,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 120000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -130,6 +142,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 240000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -140,6 +154,8 @@ execution.setText(getExecution);
                 START_TIME_IN_MILLI = 300000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
         mButtonminus.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +166,11 @@ if(START_TIME_IN_MILLI>5000) {
     mTimeLeftInMillis = START_TIME_IN_MILLI;
     updateCountDownTextView();
 }
+
+if(START_TIME_IN_MILLI == 5000) {
+    mButtonminus.setClickable(false);
+    mButtonminus.setBackgroundColor(getResources().getColor(R.color.grey));
+}
             }
         });
         mButtonplus.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +179,8 @@ if(START_TIME_IN_MILLI>5000) {
                 START_TIME_IN_MILLI = START_TIME_IN_MILLI + 5000;
                 mTimeLeftInMillis = START_TIME_IN_MILLI;
                 updateCountDownTextView();
+                mButtonminus.setClickable(true);
+                mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
             }
         });
 
@@ -197,10 +220,32 @@ mCountDownTimer = new CountDownTimer(mTimeLeftInMillis,1000) {
     public void onFinish() {
             mTimerRunning = false;
             mButtonStartPause.setText("Start");
-            mButtonStartPause.setVisibility(View.INVISIBLE);
-            mButtonReset.setVisibility(View.VISIBLE);
+            mButtonStartPause.setVisibility(View.VISIBLE);
+            mButtonReset.setVisibility(View.INVISIBLE);
 cd.stopTimer();
-
+        START_TIME_IN_MILLI =600000;
+        mTimeLeftInMillis = START_TIME_IN_MILLI;
+        updateCountDownTextView();
+        mButton20.setClickable(true);
+        mButton20.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButton30.setClickable(true);
+        mButton30.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButton45.setClickable(true);
+        mButton45.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButton60.setClickable(true);
+        mButton60.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButton90.setClickable(true);
+        mButton90.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButton120.setClickable(true);
+        mButton120.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButton240.setClickable(true);
+        mButton240.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButton300.setClickable(true);
+        mButton300.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButtonplus.setClickable(true);
+        mButtonplus.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        mButtonminus.setClickable(true);
+        mButtonminus.setBackgroundColor(getResources().getColor(R.color.purple_500));
         Toasty.success(TimerActivity.this,"Time's Up", Toasty.LENGTH_SHORT).show();
        // Toast.makeText(TimerActivity.this, "Time's Up!!!" , Toast.LENGTH_SHORT).show();
         md.start();
