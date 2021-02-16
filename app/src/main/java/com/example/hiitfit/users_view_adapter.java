@@ -32,6 +32,10 @@ public class users_view_adapter extends FirestoreRecyclerAdapter<users,users_vie
         return new users_view_holder(v);
     }
 
+    public void deleteItem(int position){
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
     class users_view_holder extends RecyclerView.ViewHolder{
         TextView textView_users, textView_email;
 
