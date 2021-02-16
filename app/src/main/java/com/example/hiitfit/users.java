@@ -1,25 +1,24 @@
 package com.example.hiitfit;
 
 public class users {
-    private String users, email;
+    private String fName, email;
 
     public users()
     {
         //empty constructor needed
     }
 
-    public users(String title, String email, String fName)
+    public users(String fName, String email)
     {
-        this.users = users;
+        this.fName = fName;
         this.email = email;
     }
 
-    public String getUsers() {
-        return users;
+    public String getfName() {
+        return fName;
     }
 
     public String getEmail() {
         return email;
     }
-
 }

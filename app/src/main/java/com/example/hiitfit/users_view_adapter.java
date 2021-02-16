@@ -21,7 +21,7 @@ public class users_view_adapter extends FirestoreRecyclerAdapter<users,users_vie
     @Override
     protected void onBindViewHolder(@NonNull users_view_holder holder, int position, @NonNull users model) {
 
-        holder.textView_users.setText(model.getUsers());
+        holder.textView_users.setText(model.getfName());
         holder.textView_email.setText(model.getEmail());
     }
 
@@ -33,7 +33,7 @@ public class users_view_adapter extends FirestoreRecyclerAdapter<users,users_vie
     }
 
     class users_view_holder extends RecyclerView.ViewHolder{
-        TextView textView_users, textView_email, textView_priority;
+        TextView textView_users, textView_email;
 
         public users_view_holder(@NonNull View itemView) {
             super(itemView);

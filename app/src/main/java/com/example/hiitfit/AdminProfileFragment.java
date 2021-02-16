@@ -19,6 +19,7 @@ import com.google.firebase.firestore.Query;
 public class AdminProfileFragment extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference usersRef = db.collection("users");
+    private RecyclerView recyclerView;
 
     private  users_view_adapter adapter;
     @Nullable
@@ -26,6 +27,7 @@ public class AdminProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View V= inflater.inflate(R.layout.fragment_profile_admin, container, false);
 
+        recyclerView = V.findViewById(R.id.view_users_recyclerview);
         setUpRecyclerView();
         return V;
     }
@@ -36,12 +38,9 @@ public class AdminProfileFragment extends Fragment {
 
         FirestoreRecyclerOptions<users> options = new FirestoreRecyclerOptions.Builder<users>().setQuery(query,users.class).build();
         adapter = new users_view_adapter(options);
-
-        RecyclerView recyclerView = null;
-        recyclerView.findViewById(R.id.view_users_recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(adapter);
+       recyclerView.setAdapter(adapter);
     }
 
     @Override
