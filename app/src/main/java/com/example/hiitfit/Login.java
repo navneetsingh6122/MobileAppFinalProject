@@ -1,9 +1,9 @@
 package com.example.hiitfit;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,20 +13,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import android.util.Log;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
-TextView textForSignUp;
+    TextView textForSignUp;
     EditText mEmail, mPassword;
     FirebaseAuth mAuth;
-    Button login;
+    FirebaseFirestore fstore;
     TextView forget_password;
+    Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,7 @@ TextView textForSignUp;
         login =(Button) findViewById(R.id.button_login);
         mAuth = FirebaseAuth.getInstance();
         forget_password = (TextView) findViewById(R.id.forgot_password);
+        fstore=FirebaseFirestore.getInstance();
 
 
         forget_password.setOnClickListener(new View.OnClickListener() {
@@ -81,52 +84,93 @@ TextView textForSignUp;
                 passwordResetDialog.create().show();
             }
         });
+
+        textForSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Signup.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Email = mEmail.getText().toString().trim();
                 String Password = mPassword.getText().toString().trim();
 
-                if(TextUtils.isEmpty(Email)){
+                if (TextUtils.isEmpty(Email)) {
                     mEmail.setError("Email is required");
                     return;
                 }
-                if(TextUtils.isEmpty(Password)){
+                if (TextUtils.isEmpty(Password)) {
                     mPassword.setError("Password id required");
                     return;
                 }
-                if(Password.length()<6){
+                if (Password.length() < 6) {
                     mPassword.setError("Password should be greater than 6 characters");
                     return;
                 }
-                mAuth.signInWithEmailAndPassword(Email , Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(mEmail.getText().toString(), mPassword.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(Email.equals("ad") && Password.equals("admin123")){
-                            Intent i = new Intent(Login.this, AdminHome.class);
-                            startActivity(i);
-                        }
-                        else if(task.isSuccessful()){
-                            Toast.makeText(Login.this , "User successfully Logged In" , Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent (Login.this, HomeActivity.class);
-                            startActivity(intent);
+                    public void onSuccess(AuthResult authResult) {
+                        //      if(Email.equals("ad") && Password.equals("admin123")){
+                        //         Intent i = new Intent(Login.this, AdminHome.class);
+                        //         startActivity(i);
+                        //    }
+                        Toast.makeText(Login.this, "User successfully Logged In", Toast.LENGTH_SHORT).show();
+                        checkIfAdmin(authResult.getUser().getUid());
+                        //Intent intent = new Intent (Login.this, HomeActivity.class);
+                        //startActivity(intent);
 
-                        }else {
-                            Toast.makeText(Login.this , "Error!! :- " + task.getException().getMessage() , Toast.LENGTH_SHORT).show();
-                        }
-
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
+
+
+
+            }
+        });
+
+    }
+
+
+
+
+    private void checkIfAdmin(String uid) {
+        DocumentReference documentReference=fstore.collection("users").document(uid);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d("TAG", "onSuccess: " + documentSnapshot.getData());
+
+                if (documentSnapshot.getString("isUser") != null) {
+
+                    // user is admin
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), AdminHome.class));
+                    finish();
+
+                }
             }
 
         });
-        textForSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login.this , Signup.class);
-                startActivity(intent);
-            }
-        });
+
+
+
+
+
+
     }
+
 }

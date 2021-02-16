@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -27,11 +28,11 @@ import java.util.Map;
 public class Signup extends AppCompatActivity {
     public static final String TAG = "TAG";
     TextView textForLogin;
-EditText mName,mEmail, mPassword;
-FirebaseAuth mAuth;
-Button register;
-FirebaseFirestore fstore;
-String userID;
+    EditText mName,mEmail, mPassword;
+    FirebaseAuth mAuth;
+    Button register;
+    FirebaseFirestore fstore;
+    String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +75,9 @@ String userID;
                             Map<String,Object> user = new HashMap<>();
                             user.put("fName", fullName);
                             user.put("email", email);
+                            // specifying user as a user not as an admin
+                            user.put("isUser","0");
+
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
