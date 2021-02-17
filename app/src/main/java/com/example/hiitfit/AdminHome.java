@@ -17,7 +17,7 @@ public class AdminHome extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_admin_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListner);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AdminExerciseFragment()).commit();
     }
@@ -26,15 +26,19 @@ public class AdminHome extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
             switch (item.getItemId()){
-                case R.id.navigation_exercises:
+                case R.id.navigation_admin_exercises:
                     selectedFragment = new AdminExerciseFragment();
                     break;
-                case R.id.navigation_help:
-                    selectedFragment = new HelpFragment();
+                case R.id.navigation_admin_help:
+                    selectedFragment = new AdminHelpFragment();
                     break;
-                case R.id.navigation_profile:
+                case R.id.navigation_admin_profile:
                     selectedFragment = new AdminProfileFragment();
                     break;
+                case R.id.navigation_admin_progress:
+                    selectedFragment = new ProgressFragment();
+                    break;
+
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
             return true;

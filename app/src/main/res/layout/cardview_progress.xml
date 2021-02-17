@@ -21,15 +21,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EFEBEB">
+            android:background="#FFE14A">
 
             <TextView
                 android:id="@+id/textView_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/cairo"
                 android:text="Name"
                 android:textColor="@color/black"
@@ -44,8 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Name"
                 android:textColor="@color/black"
@@ -54,13 +54,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_exerciseCategory" />
+
             <TextView
                 android:id="@+id/textView_exerciseDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Duration"
                 android:textColor="@color/black"
@@ -75,8 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Date"
                 android:textColor="@color/black"
@@ -91,8 +92,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Category"
                 android:textColor="@color/black"
@@ -101,7 +102,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_userName" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

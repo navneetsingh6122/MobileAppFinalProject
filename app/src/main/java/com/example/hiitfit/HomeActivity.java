@@ -35,9 +35,7 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.navigation_profile:
                     selectedFragment = new ProfileFragment();
                     break;
-                case R.id.navigation_progress:
-                    selectedFragment = new ProgressFragment();
-                    break;
+
 
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();

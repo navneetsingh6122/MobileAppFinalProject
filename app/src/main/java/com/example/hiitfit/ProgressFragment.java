@@ -34,7 +34,7 @@ private ProgressAdapter madapter;
     }
 
     private void setUpRecyclerView() {
-        Query query = progressRef.orderBy("DateAndTime",Query.Direction.ASCENDING);
+        Query query = progressRef.orderBy("DateAndTime",Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<ProgressModel> options = new FirestoreRecyclerOptions.Builder<ProgressModel>().setQuery(query,ProgressModel.class).build();
    madapter = new ProgressAdapter(options);
