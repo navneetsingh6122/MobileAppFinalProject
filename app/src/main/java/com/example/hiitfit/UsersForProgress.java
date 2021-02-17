@@ -1,9 +1,12 @@
 package com.example.hiitfit;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
@@ -21,12 +24,14 @@ private UsersProgressAdapter madapter;
 private FirebaseFirestore db = FirebaseFirestore.getInstance();
 private CollectionReference mref = db.collection("users");
 private RecyclerView rc;
+EditText search;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_progress,container,false);
         rc =  v.findViewById(R.id.ProgressRecycler);
-        setUpRecyclerView();
+        search =(EditText)v.findViewById(R.id.editText_searchName);
+                setUpRecyclerView();
 
         return v;
     }
@@ -40,6 +45,34 @@ private RecyclerView rc;
         rc.setHasFixedSize(true);
         rc.setLayoutManager(new LinearLayoutManager(getActivity()));
         rc.setAdapter(madapter);
+
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+               Query query;
+               if(s.toString().isEmpty()){
+                   query = mref.orderBy("fName",Query.Direction.ASCENDING);
+
+               }else{
+                   query = mref.whereEqualTo("fName", s.toString()).orderBy("fName",Query.Direction.ASCENDING);
+               }
+
+                FirestoreRecyclerOptions<UsersModel> options = new FirestoreRecyclerOptions.Builder<UsersModel>()
+                        .setQuery(query,UsersModel.class).build();
+               madapter.updateOptions(options);
+            }
+        });
     }
 
     @Override
