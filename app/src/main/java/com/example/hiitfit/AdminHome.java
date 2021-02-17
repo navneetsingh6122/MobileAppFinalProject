@@ -36,7 +36,7 @@ public class AdminHome extends AppCompatActivity {
                     selectedFragment = new AdminProfileFragment();
                     break;
                 case R.id.navigation_admin_progress:
-                    selectedFragment = new ProgressFragment();
+                    selectedFragment = new UsersForProgress();
                     break;
 
             }
