@@ -34,7 +34,7 @@ public class ProgressActivity extends AppCompatActivity {
 
     private void setUpRecyclerView() {
        // Query query = progressRef.orderBy("DateAndTime",Query.Direction.DESCENDING);
-Query query = progressRef.whereEqualTo("Name",nameu);
+Query query = progressRef.whereEqualTo("Name",nameu).orderBy("DateAndTime",Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<ProgressModel> options = new FirestoreRecyclerOptions.Builder<ProgressModel>().setQuery(query,ProgressModel.class).build();
         madapter = new ProgressAdapter(options);
         rc.setHasFixedSize(true);

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
 import ticker.views.com.ticker.widgets.circular.timer.view.CircularView;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -36,7 +37,7 @@ TextView name,execution;
     private SimpleDateFormat dateFormat;
     private String date;
 
-    String getName,getExecution,getCategory;
+    String getName,getExecution,getCategory,getUsername;
 private TextView mTextViewCountDown;
 private Button mButtonStartPause;
 private Button mButtonReset;
@@ -65,6 +66,7 @@ execution = (TextView)findViewById(R.id.execution_Timer);
 getName = getIntent().getExtras().getString("Name");
 getExecution = getIntent().getExtras().getString("Execution");
 getCategory = getIntent().getExtras().getString("category");
+
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getCurrentUser().getUid();
         fstore = FirebaseFirestore.getInstance();
@@ -243,6 +245,8 @@ if(START_TIME_IN_MILLI == 5000) {
                 resetTimer();
             }
         });
+
+
         updateCountDownTextView();
     }
 

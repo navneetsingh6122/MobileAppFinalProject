@@ -21,87 +21,157 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFE14A">
+            android:background="#47555E">
 
             <TextView
                 android:id="@+id/textView_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
                 android:fontFamily="@font/cairo"
                 android:text="Name"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_name"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView_exerciseName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Name"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_ex"
                 app:layout_constraintTop_toBottomOf="@+id/textView_exerciseCategory" />
 
             <TextView
                 android:id="@+id/textView_exerciseDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Duration"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_duration"
                 app:layout_constraintTop_toBottomOf="@+id/textView_exerciseName" />
 
             <TextView
                 android:id="@+id/textView_exerciseDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Date"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_date"
                 app:layout_constraintTop_toBottomOf="@+id/textView_exerciseDuration" />
 
             <TextView
                 android:id="@+id/textView_exerciseCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:fontFamily="@font/cairo"
                 android:text="Exercise Category"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/card_category"
                 app:layout_constraintTop_toBottomOf="@+id/textView_userName" />
+
+            <TextView
+                android:id="@+id/card_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="9dp"
+                android:drawableStart="@drawable/ic_accountname"
+                android:fontFamily="@font/cairo"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/card_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_category"
+                android:fontFamily="@font/cairo"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_name" />
+
+            <TextView
+                android:id="@+id/card_ex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_exercise_progress"
+                android:fontFamily="@font/cairo"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_category" />
+
+            <TextView
+                android:id="@+id/card_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_duration"
+                android:fontFamily="@font/cairo"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_ex" />
+
+            <TextView
+                android:id="@+id/card_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_calendar"
+                android:fontFamily="@font/cairo"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_duration" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

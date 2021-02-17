@@ -26,6 +26,7 @@
         android:text="Reset"
         android:visibility="invisible" />
 
+
     <Button
         android:id="@+id/button_20"
         android:layout_width="wrap_content"
@@ -183,5 +184,7 @@
         app:m_arc_stroke_color="@color/purple_500"
         app:m_cicle_stroke_width="20"
         app:m_circle_radius="120"
+        android:textStyle="bold"
+        android:fontFamily="@font/cairo"
         app:m_circle_stroke_color="@color/white" />
 </RelativeLayout>

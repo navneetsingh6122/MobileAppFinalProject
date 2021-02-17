@@ -65,7 +65,7 @@ EditText search;
                    query = mref.orderBy("fName",Query.Direction.ASCENDING);
 
                }else{
-                   query = mref.whereEqualTo("fName", s.toString()).orderBy("fName",Query.Direction.ASCENDING);
+                   query = mref.orderBy("fName",Query.Direction.ASCENDING).startAt(s.toString()).endAt(s.toString()+"\uf8ff");
                }
 
                 FirestoreRecyclerOptions<UsersModel> options = new FirestoreRecyclerOptions.Builder<UsersModel>()
