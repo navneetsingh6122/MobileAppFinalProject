@@ -1,6 +1,7 @@
 package com.example.hiitfit;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class AdminProfileFragment extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private CollectionReference usersRef = db.collection("users");
     private RecyclerView recyclerView;
 
@@ -43,7 +46,7 @@ public class AdminProfileFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(adapter);
 
-        /*new ItemTouchHelper(new ItemTouchHelper.Callback() {
+        new ItemTouchHelper(new ItemTouchHelper.Callback() {
             @Override
             public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
                 int swipeFlags = ItemTouchHelper.START;
@@ -59,9 +62,12 @@ public class AdminProfileFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 adapter.deleteItem(viewHolder.getAdapterPosition());
+
             }
-        }).attachToRecyclerView(recyclerView);*/
+        }).attachToRecyclerView(recyclerView);
     }
+
+
 
     @Override
     public void onStart() {

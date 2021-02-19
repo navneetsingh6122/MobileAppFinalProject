@@ -75,7 +75,6 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         nameTextView = findViewById(R.id.name_textview2);
-        emailTextView = findViewById(R.id.email_textview2);
         userImageView = findViewById(R.id.user_imageView2);
         fstore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
