@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="181dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="172dp"
             android:layout_marginBottom="113dp"
             android:text="@string/your_profile"
@@ -34,15 +34,14 @@
             app:layout_constraintHorizontal_bias="0.591"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.431" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="280dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="90dp"
+        android:layout_width="265dp"
+        android:layout_height="356dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -97,9 +96,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/custom_button"
 
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/custom_button"
             android:text="@string/log_out"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -112,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="53dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/grey"
             android:text="Delete your account"
@@ -127,9 +126,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="17dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/grey"
             android:text="@string/change_your_profile"
             android:textSize="12sp"
@@ -137,7 +135,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/delete_button" />
+            app:layout_constraintTop_toBottomOf="@+id/delete_button"
+            app:layout_constraintVertical_bias="0.611" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
