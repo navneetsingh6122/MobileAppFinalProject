@@ -24,6 +24,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +36,7 @@ public class ProfileFragment extends Fragment {
     String userID;
     FirebaseAuth mAuth;
     Button logout, changeprofile;
+    private ImageView img;
 
     @Nullable
     @Override
@@ -42,6 +44,7 @@ public class ProfileFragment extends Fragment {
         View V= inflater.inflate(R.layout.fragment_profile,container,false);
         nameTextView = (TextView) V.findViewById(R.id.name_textview);
         emailTextView = (TextView) V.findViewById(R.id.email_textview);
+        img = (ImageView) V.findViewById(R.id.user_imageView);
         logout = (Button) V.findViewById(R.id.logout_button);
         changeprofile = (Button) V.findViewById(R.id.profile_button);
         fstore=FirebaseFirestore.getInstance();
@@ -80,6 +83,7 @@ public class ProfileFragment extends Fragment {
                 {
                     nameTextView.setText(" " + documentSnapshot.getString("fName"));
                     emailTextView.setText(" " + documentSnapshot.getString("email"));
+                    Picasso.get().load(documentSnapshot.getString("ProfileImageUrl")).fit().into(img);
                 }
                 else {
                     Toast.makeText(getContext(), "row not found", Toast.LENGTH_LONG).show();
