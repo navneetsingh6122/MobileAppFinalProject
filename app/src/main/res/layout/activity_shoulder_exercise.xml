@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
 
         android:fontFamily="@font/cairo"
-        android:inputType="textNoSuggestions"
+
         android:text="Shoulder"
         android:textColor="@color/black"
         android:textSize="32dp" />

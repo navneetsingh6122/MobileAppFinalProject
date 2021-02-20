@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -22,6 +24,8 @@ public class UsersProgressAdapter extends FirestoreRecyclerAdapter<UsersModel,Us
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull UsersModel model) {
         holder.name.setText(model.getfName());
+        Picasso.get().load(model.getProfileImageUrl()).fit().into(holder.img);
+
         holder.cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,9 +46,11 @@ public class UsersProgressAdapter extends FirestoreRecyclerAdapter<UsersModel,Us
     class myViewHolder extends RecyclerView.ViewHolder{
 TextView name;
 CardView cd;
+ImageView img;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.admin_view_user_progress);
+            img= itemView.findViewById(R.id.imageView_adminProfile);
             cd = itemView.findViewById(R.id.user_cardview);
         }
     }
