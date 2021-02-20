@@ -5,26 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ShoulderDescription">
+    tools:context=".AdminExerciseDiscription">
 
-    <Button
-        android:id="@+id/button_timer"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Let's start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_progress"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="Progress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_timer" />
 
     <RelativeLayout
         android:id="@+id/re"
@@ -37,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/img_ex"
+            android:id="@+id/admin_description_image"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginLeft="0dp"
@@ -49,7 +31,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
-        android:layout_height="390dp"
+        android:layout_height="430dp"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="#ECB50E"
                 android:fontFamily="@font/cairo"
@@ -79,7 +61,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/tv_execution"
+                app:layout_constraintBottom_toTopOf="@+id/admin_description_execution"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/admin_decription_instructions" />
 
@@ -88,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="#ECB50E"
                 android:fontFamily="@font/cairo"
@@ -102,7 +84,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
             <TextView
-                android:id="@+id/tv_instructions"
+                android:id="@+id/admin_decription_instructions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -119,10 +101,10 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+                app:layout_constraintTop_toBottomOf="@+id/admin_description_name" />
 
             <TextView
-                android:id="@+id/tv_execution"
+                android:id="@+id/admin_description_execution"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
 
@@ -139,10 +121,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_instructions" />
+                app:layout_constraintTop_toBottomOf="@+id/admin_decription_instructions" />
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/admin_description_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -155,7 +137,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/re" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -165,6 +147,5 @@
         app:barrierDirection="top"
         tools:layout_editor_absoluteX="194dp"
         tools:layout_editor_absoluteY="301dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

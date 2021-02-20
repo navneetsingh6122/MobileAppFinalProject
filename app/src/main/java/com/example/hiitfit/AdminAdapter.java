@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,6 +20,7 @@ import java.util.zip.Inflater;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import pl.droidsonroids.gif.GifImageView;
 
 public class AdminAdapter extends FirestoreRecyclerAdapter<AdminModel, AdminAdapter.myViewHolder> {
 
@@ -30,15 +32,18 @@ public class AdminAdapter extends FirestoreRecyclerAdapter<AdminModel, AdminAdap
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull AdminModel model) {
         holder.textView.setText(model.getName());
-        Picasso.get().load(model.getImageUrl()).into(holder.img);
+       Picasso.get().load(model.getImageUrl()).fit().into(holder.img);
+
         holder.cd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.cd.getContext(), ShoulderDescription.class);
+
+                Intent intent = new Intent(holder.cd.getContext(), AdminExerciseDiscription.class);
                 intent.putExtra("fullname", model.getName());
                 intent.putExtra("ins",model.getInstructions());
                 intent.putExtra("exe",model.getExecution());
-                intent.putExtra("img",model.getImageUrl());
+                intent.putExtra("img",model
+                        .getImageUrl());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 holder.cd.getContext().startActivity(intent);
             }
@@ -56,7 +61,7 @@ public void deleteItem(int position){
 }
     class myViewHolder extends RecyclerView.ViewHolder{
 TextView textView;
-ImageView img, imgdel;
+GifImageView img, imgdel;
 CardView cd;
     public myViewHolder(@NonNull View itemView) {
         super(itemView);

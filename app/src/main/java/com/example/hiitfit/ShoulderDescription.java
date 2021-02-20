@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ private CollectionReference userref = db.collection("users");
 fauth = FirebaseAuth.getInstance();
 UserId = fauth.getCurrentUser().getUid();
         n = (TextView)findViewById(R.id.tv_name);
-        i = (TextView)findViewById(R.id.tv_Instruction);
+        i = (TextView)findViewById(R.id.tv_instructions);
         e = (TextView)findViewById(R.id.tv_execution);
         img = (GifImageView) findViewById(R.id.img_ex);
         Timer = (Button)findViewById(R.id.button_timer);

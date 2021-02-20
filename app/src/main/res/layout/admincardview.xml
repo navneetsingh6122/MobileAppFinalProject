@@ -16,7 +16,7 @@ android:layout_marginLeft="20dp"
         android:background="#FAFAFB"
         android:padding="16dp">
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/image_admin_exercise"
             android:layout_width="150dp"
             android:layout_height="150dp"
