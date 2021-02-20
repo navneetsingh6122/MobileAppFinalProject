@@ -25,6 +25,7 @@ public class users_view_adapter extends FirestoreRecyclerAdapter<users,users_vie
         holder.textView_email.setText(model.getEmail());
         holder.lastname.setText(model.getLastExercise());
         holder.lastdate.setText(model.getLastDate());
+        holder.bmiCat.setText(model.getBMI());
     }
 
     @NonNull
@@ -37,7 +38,7 @@ public class users_view_adapter extends FirestoreRecyclerAdapter<users,users_vie
 
 
     class users_view_holder extends RecyclerView.ViewHolder{
-        TextView textView_users, textView_email,lastname,lastdate;
+        TextView textView_users, textView_email,lastname,lastdate,bmiCat;
 
         public users_view_holder(@NonNull View itemView) {
             super(itemView);
@@ -45,6 +46,7 @@ public class users_view_adapter extends FirestoreRecyclerAdapter<users,users_vie
             textView_email = itemView.findViewById(R.id.users_view_email);
             lastname = itemView.findViewById(R.id.lastActivityDone);
             lastdate = itemView.findViewById(R.id.lastActivityDate);
+            bmiCat = itemView.findViewById(R.id.bmi);
         }
     }
 }

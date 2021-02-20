@@ -77,6 +77,15 @@ public class ProfileFragment extends Fragment {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     Toast.makeText(getActivity(),"Account is deleted", Toast.LENGTH_LONG).show();
+                                    DocumentReference document = fstore.collection("users").document(userID);
+                                    document.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                           if(task.isSuccessful()){
+                                               Toast.makeText(getContext(),"User data deleted",Toast.LENGTH_SHORT).show();
+                                           }
+                                        }
+                                    });
                                     Intent v = new Intent(getActivity(), Login.class);
                                     startActivity(v);
                                     getActivity().finishAffinity();

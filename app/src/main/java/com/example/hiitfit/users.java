@@ -1,18 +1,23 @@
 package com.example.hiitfit;
 
 public class users {
-    private String fName, email,LastExercise,LastDate;
+    private String fName, email,LastExercise,LastDate,  BMI;
 
     public users()
     {
         //empty constructor needed
     }
 
-    public users(String fName, String email, String lastExercise, String lastDate) {
+    public users(String fName, String email, String lastExercise, String lastDate, String BMI) {
         this.fName = fName;
         this.email = email;
         LastExercise = lastExercise;
         LastDate = lastDate;
+        this.BMI = BMI;
+    }
+
+    public String getBMI() {
+        return BMI;
     }
 
     public String getLastExercise() {
@@ -45,5 +50,9 @@ public class users {
 
     public void setLastDate(String lastDate) {
         LastDate = lastDate;
+    }
+
+    public void setBMI(String BMI) {
+        this.BMI = BMI;
     }
 }
