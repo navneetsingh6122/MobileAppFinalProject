@@ -46,7 +46,9 @@ public class ProgressAdapter extends FirestoreRecyclerAdapter<ProgressModel,Prog
         holder.Tedate.setText(model.getDateAndTime());
 
     }
-
+    public void deleteItem(int position){
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
     class myViewHolder extends RecyclerView.ViewHolder{
 
         TextView Tn,Tec,Ten,Ted,Tedate;

@@ -1,6 +1,8 @@
 package com.example.hiitfit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +32,17 @@ public class ProgressActivity extends AppCompatActivity {
         nameu = getIntent().getExtras().getString("userName");
         tv.setText(nameu + "'s Progress");
         setUpRecyclerView();
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                madapter.deleteItem(viewHolder.getAdapterPosition());
+            }
+        }).attachToRecyclerView(rc);
     }
 
     private void setUpRecyclerView() {
