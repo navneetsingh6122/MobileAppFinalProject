@@ -14,12 +14,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -260,7 +263,7 @@ mCountDownTimer = new CountDownTimer(mTimeLeftInMillis,1000) {
         updateCountDownTextView();
 
     }
-
+//////ON FINISH ///////////////////////////
     @Override
     public void onFinish() {
             mTimerRunning = false;
@@ -333,8 +336,27 @@ Toast.makeText(TimerActivity.this,"Progress Successfully Added",Toast.LENGTH_SHO
 
                         }
                     });
+Map<String,String> lastActivityTime = new HashMap<>();
+lastActivityTime.put("LastDate",currentDateTimeString);
+lastActivityTime.put("LastExercise",getName);
+
+                    document.set(lastActivityTime, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
 
 
+                            }
+                            else{
+
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
                 }
                 else {
                     Toast.makeText(TimerActivity.this, "row not found", Toast.LENGTH_LONG).show();

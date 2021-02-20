@@ -38,7 +38,7 @@ public class AdminProfileFragment extends Fragment {
 
     private void setUpRecyclerView()
     {
-        Query query = usersRef.orderBy("fName", Query.Direction.DESCENDING);
+        Query query = usersRef.orderBy("LastDate", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<users> options = new FirestoreRecyclerOptions.Builder<users>().setQuery(query,users.class).build();
         adapter = new users_view_adapter(options);
@@ -46,25 +46,7 @@ public class AdminProfileFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(adapter);
 
-        new ItemTouchHelper(new ItemTouchHelper.Callback() {
-            @Override
-            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-                int swipeFlags = ItemTouchHelper.START;
-                int dragFlags =ItemTouchHelper.UP | ItemTouchHelper.DOWN;
-                return makeMovementFlags(dragFlags, swipeFlags);
-            }
 
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapter.deleteItem(viewHolder.getAdapterPosition());
-
-            }
-        }).attachToRecyclerView(recyclerView);
     }
 
 

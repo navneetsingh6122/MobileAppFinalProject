@@ -120,7 +120,6 @@ public class Login extends AppCompatActivity {
                         //         Intent i = new Intent(Login.this, AdminHome.class);
                         //         startActivity(i);
                         //    }
-                        Toast.makeText(Login.this, "User successfully Logged In", Toast.LENGTH_SHORT).show();
                         checkIfAdmin(authResult.getUser().getUid());
                         //Intent intent = new Intent (Login.this, HomeActivity.class);
                         //startActivity(intent);
@@ -129,7 +128,7 @@ public class Login extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Error :- " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -154,10 +153,13 @@ public class Login extends AppCompatActivity {
 
                 if (documentSnapshot.getString("isUser") != null) {
 
-                    // user is admin
+                    Toast.makeText(Login.this, "User successfully Logged In", Toast.LENGTH_SHORT).show();
+
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     finish();
                 } else {
+                    Toast.makeText(Login.this, "Admin successfully Logged In", Toast.LENGTH_SHORT).show();
+
                     startActivity(new Intent(getApplicationContext(), AdminHome.class));
                     finish();
 
