@@ -6,7 +6,7 @@
     tools:context=".EditProfile" >
 
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/user_imageView2"
         android:layout_width="100sp"
         android:layout_height="100sp"
@@ -24,9 +24,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="260dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="150dp"
+        android:layout_height="130dp"
         android:layout_marginBottom="150dp"
+        android:layout_marginTop="150dp"
         app:layout_constraintBottom_toTopOf="@+id/save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
@@ -35,34 +35,29 @@
         app:layout_constraintVertical_bias="1.0">
 
 
-        <TextView
-            android:id="@+id/name_textview2"
-            android:layout_width="0dp"
+        <EditText
+            android:id="@+id/editText_editEmail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:drawableStart="@drawable/ic_person_black"
-            android:text="@string/your_name"
-            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_editName" />
 
         <EditText
             android:id="@+id/editText_editName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="12dp"
             android:ems="10"
+            android:hint="Name"
             android:inputType="textPersonName"
-            android:text="Name"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_textview2" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

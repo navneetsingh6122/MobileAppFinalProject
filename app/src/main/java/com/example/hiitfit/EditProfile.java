@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import pl.droidsonroids.gif.GifImageView;
 
 import android.Manifest;
 import android.app.Activity;
@@ -32,6 +33,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -54,8 +56,8 @@ public class EditProfile extends AppCompatActivity {
     private static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
-    private TextView emailTextView, nameTextView;
-    ImageView userImageView;
+    private EditText emailTextView, nameTextView;
+    GifImageView userImageView;
     private FirebaseFirestore fstore;
     String userID;
     FirebaseAuth mAuth;
@@ -66,7 +68,7 @@ public class EditProfile extends AppCompatActivity {
     String imageurl;
     private FirebaseStorage storage;
     private StorageReference str;
-
+FirebaseUser fUser;
     @Override
 
 
@@ -74,8 +76,8 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        nameTextView = findViewById(R.id.name_textview2);
-        emailTextView = findViewById(R.id.email_textview2);
+        nameTextView = findViewById(R.id.editText_editName);
+        emailTextView = findViewById(R.id.editText_editEmail);
         userImageView = findViewById(R.id.user_imageView2);
         fstore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -85,6 +87,7 @@ public class EditProfile extends AppCompatActivity {
         gallery_button = findViewById(R.id.gallery_button);
         storage = FirebaseStorage.getInstance();
         str = storage.getReference();
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
         fetchdata();
 
         gallery_button.setOnClickListener(new View.OnClickListener() {
@@ -98,31 +101,70 @@ public class EditProfile extends AppCompatActivity {
         });
 
         save_button.setOnClickListener(new View.OnClickListener() {
+
+            String name = nameTextView.getText().toString().trim();
+            String email = emailTextView.getText().toString().trim();
+
+
             @Override
             public void onClick(View v) {
+                if (fUser.getEmail() == email) {
+                    Toast.makeText(EditProfile.this, "email address same", Toast.LENGTH_SHORT).show();
+                } else{
+                    fUser.updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Map<String, String> users = new HashMap<>();
+                                users.put("ProfileImageUrl", imageurl);
+                                users.put("email", email);
+                                users.put("fName", name);
+                                users.put("isUser", "0");
+                                DocumentReference document = fstore.collection("users").document(userID);
+
+
+                                document.set(users, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(EditProfile.this, "Image successfully Uploaded", Toast.LENGTH_SHORT).show();
+
+
+                                        } else {
+                                            Toast.makeText(EditProfile.this, "Image uploading failed", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                                });
+                            }
+
+                        }
+                    });
+            }
                 Map<String,String> users = new HashMap<>();
                 users.put("ProfileImageUrl",imageurl);
+                users.put("email",email);
+                users.put("fName",name);
+                users.put("isUser","0");
                 DocumentReference document = fstore.collection("users").document(userID);
-document.set(users, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
-    @Override
-    public void onComplete(@NonNull Task<Void> task) {
-        if(task.isSuccessful()){
-            Toast.makeText(EditProfile.this,"Image successfully Uploaded",Toast.LENGTH_SHORT).show();
 
 
-        }
-        else{
-            Toast.makeText(EditProfile.this,"Image uploading failed",Toast.LENGTH_SHORT).show();
 
-        }
-    }
-}).addOnFailureListener(new OnFailureListener() {
-    @Override
-    public void onFailure(@NonNull Exception e) {
-        Toast.makeText(EditProfile.this,"Something went Wrong",Toast.LENGTH_SHORT).show();
 
-    }
-});
+                document.set(users, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(EditProfile.this,"Image successfully Uploaded",Toast.LENGTH_SHORT).show();
+
+
+                        }
+                        else{
+                            Toast.makeText(EditProfile.this,"Image uploading failed",Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
             }
         });
     }

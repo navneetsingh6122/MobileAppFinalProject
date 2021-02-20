@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.squareup.picasso.Picasso;
@@ -19,6 +20,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ShoulderAdapter extends FirestoreRecyclerAdapter<ShoulderModel,ShoulderAdapter.myViewHolder> {
+
+
+
 
     public ShoulderAdapter(@NonNull FirestoreRecyclerOptions<ShoulderModel> options) {
         super(options);

@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8E5E5"
+    android:background="#ffffff"
     android:orientation="vertical"
     tools:context=".ShoulderExercise">
 
     <TextView
+        android:layout_gravity="center"
         android:id="@+id/user_exercise_name"
-        android:inputType="textNoSuggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="138dp"
+
+        android:fontFamily="@font/cairo"
+        android:inputType="textNoSuggestions"
         android:text="Shoulder"
         android:textColor="@color/black"
-        android:fontFamily="@font/cairo"
         android:textSize="32dp" />
 
 
@@ -24,5 +25,5 @@
         android:id="@+id/Shoulderrecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FBFBFF" />
+        android:background="#ffffff" />
 </LinearLayout>

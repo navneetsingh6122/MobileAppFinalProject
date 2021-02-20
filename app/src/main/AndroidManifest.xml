@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HIITFIT">
         <activity android:name=".ProgressActivity"></activity>
-        <activity android:name=".TimerActivity" />
+        <activity android:name=".TimerActivity"
+            android:parentActivityName=".ShoulderDescription"
+            />
         <activity android:name=".TrapsExercise" />
         <activity android:name=".EditProfile" />
         <activity android:name=".AdminChest" />
@@ -19,7 +21,9 @@
         <activity android:name=".AdminAddShoulder" />
         <activity android:name=".AdminHome" />
         <activity android:name=".ShoulderDescription" />
-        <activity android:name=".ShoulderExercise" />
+        <activity android:name=".ShoulderExercise"
+            android:parentActivityName=".HomeActivity"
+            />
         <activity android:name=".HomeActivity" />
         <activity android:name=".Signup" />
         <activity android:name=".Login" />

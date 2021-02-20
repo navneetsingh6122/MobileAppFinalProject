@@ -2,6 +2,7 @@ package com.example.hiitfit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import pl.droidsonroids.gif.GifImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +25,7 @@ import com.squareup.picasso.Picasso;
 public class ShoulderDescription extends AppCompatActivity {
 TextView n,i,e;
 String s1,s2,s3,category;
-ImageView img;
+GifImageView img;
 String url;
 Button Timer,Progress;
 Picasso p;
@@ -40,7 +42,7 @@ UserId = fauth.getCurrentUser().getUid();
         n = (TextView)findViewById(R.id.tv_name);
         i = (TextView)findViewById(R.id.tv_Instruction);
         e = (TextView)findViewById(R.id.tv_execution);
-        img = (ImageView)findViewById(R.id.img_ex);
+        img = (GifImageView) findViewById(R.id.img_ex);
         Timer = (Button)findViewById(R.id.button_timer);
 Progress = (Button)findViewById(R.id.button_progress);
         s1 = getIntent().getExtras().getString("fullname");
@@ -48,9 +50,14 @@ Progress = (Button)findViewById(R.id.button_progress);
         s3 = getIntent().getExtras().getString("exe");
         category = getIntent().getExtras().getString("category");
 url = getIntent().getStringExtra("img");
-Picasso.get().load(url).fit().into(img);
+//Picasso.get().load(url).fit().into(img);
+        Glide.with(this)
+                .load(url)
 
+                //.override(1000, 600)
+                .centerCrop()
 
+                .into(img);
         n.setText(s1);
         i.setText(s2);
         e.setText(s3);
