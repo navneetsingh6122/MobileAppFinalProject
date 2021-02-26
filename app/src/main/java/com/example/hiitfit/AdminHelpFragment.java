@@ -39,7 +39,8 @@ public class AdminHelpFragment extends Fragment {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+Intent i = new Intent(getActivity(),ChatActivity.class);
+startActivity(i);
             }
         });
 

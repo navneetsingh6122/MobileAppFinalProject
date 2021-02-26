@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,6 +35,7 @@ public class Signup extends AppCompatActivity {
     Button register;
     FirebaseFirestore fstore;
     String userID;
+    DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,7 @@ public class Signup extends AppCompatActivity {
         register =(Button) findViewById(R.id.button_signup);
         mAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +88,27 @@ public class Signup extends AppCompatActivity {
                                     Log.d(TAG,"onSuccess: user profile is created for" + userID);
                                 }
                             });
+                          ref = FirebaseDatabase.getInstance().getReference("users").child(userID);
+                          HashMap<String,String> hash = new HashMap<>();
+                          hash.put("id",userID);
+                            hash.put("fName", fullName);
+                            hash.put("email", email);
+                            hash.put("isUser","0");
+                            hash.put("profileImageUrl","");
+                            ref.setValue(hash).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(Signup.this,"User data successfully stored in database",Toast.LENGTH_SHORT).show();
+
+                                    }
+                                    else{
+                                        Toast.makeText(Signup.this,"Error:-" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+                            });
+
                             Intent intent = new Intent (Signup.this, Login.class);
                             startActivity(intent);
 
