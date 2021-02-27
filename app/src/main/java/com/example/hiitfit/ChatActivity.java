@@ -50,7 +50,7 @@ DatabaseReference reference;
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 User user = snapshot.getValue(User.class);
 tv.setText(user.getfName());
-Glide.with(ChatActivity.this).load("").into(img);
+Glide.with(ChatActivity.this).load(user.getProfileImageUrl()).into(img);
             }
 
             @Override

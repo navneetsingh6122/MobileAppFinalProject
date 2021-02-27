@@ -32,6 +32,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -60,7 +62,7 @@ public class EditProfile extends AppCompatActivity {
     String userID;
     FirebaseAuth mAuth;
     Button save_button, photo_button, gallery_button;
-
+DatabaseReference db;
     private static final int pick = 3;
     public Uri image;
     String imageurl;
@@ -123,6 +125,8 @@ document.set(users, SetOptions.merge()).addOnCompleteListener(new OnCompleteList
 
     }
 });
+                db = FirebaseDatabase.getInstance().getReference("users").child(userID);
+                db.child("profileImageUrl").setValue(imageurl);
             }
         });
     }

@@ -103,7 +103,7 @@
 
             <TextView
                 android:id="@+id/tv_instructions"
-                android:layout_width="wrap_content"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
@@ -113,7 +113,7 @@
                 android:fontFamily="@font/cairo"
                 android:gravity="center"
                 android:text="TextView"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
@@ -132,7 +132,7 @@
                 android:fontFamily="@font/cairo"
                 android:gravity="center"
                 android:text="TextView"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"

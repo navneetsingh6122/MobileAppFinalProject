@@ -67,7 +67,7 @@ if(firebaseUser.getUid().equals("cqm9Lh8jCxNdjHvm4f4rkemGcie2")) {
 
 else if (user.getId().equals("cqm9Lh8jCxNdjHvm4f4rkemGcie2")) {
                         mUsers.add(user);
-                    }
+}
                  /*   if(!user.getId().equals(firebaseUser.getUid())){
                         mUsers.add(user);
                     }*/

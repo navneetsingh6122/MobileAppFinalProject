@@ -23,6 +23,7 @@
         android:background="@drawable/background_right"
         android:text="Hello"
         android:textColor="#ffffff"
+        android:textSize="18sp"
         android:padding="8dp"/>
 
 </RelativeLayout>
